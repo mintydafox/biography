@@ -38,6 +38,8 @@
             padding: 20px;
             border-bottom: 1px solid #2d2d2d;
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
         header::before {
@@ -53,6 +55,25 @@
 
         header h1 {
             font-size: 24px;
+            margin-right: 10px;
+        }
+
+        header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        header .online-indicator {
+            width: 10px;
+            height: 10px;
+            background-color: grey;
+            border-radius: 50%;
+        }
+
+        header.online .online-indicator {
+            background-color: #0884dc;
         }
 
         section {
@@ -125,8 +146,10 @@
 
     <div class="container">
 
-        <header>
+        <header class="offline">
+            <img src="https://cdn.discordapp.com/avatars/518624747047616532/715c32036866edec797a35267a283dae.png?size=1024" alt="Profile Picture">
             <h1>Mintytosh</h1>
+            <div class="online-indicator"></div>
         </header>
 
         <section class="form-box">
@@ -175,7 +198,7 @@
                 statusBox.appendChild(albumCover);
                 statusBox.appendChild(activityInfo);
             } else {
-                statusBox.textContent = "i'm just browsing the web right now lmao";
+                statusBox.textContent = "I'm offline.";
             }
         }
 
