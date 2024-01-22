@@ -173,7 +173,7 @@
     </div>
 
 <script>
-        const FETCH_FROM_API = true;
+        const FETCH_FROM_API = false;
 
         function updateStatusBox(data) {
             const statusBox = document.getElementById('STATUS_BOX');
@@ -198,7 +198,7 @@
                 statusBox.appendChild(albumCover);
                 statusBox.appendChild(activityInfo);
             } else {
-                statusBox.textContent = "chilling right now.";
+                statusBox.textContent = "just chatting with friends :)";
             }
         }
 
