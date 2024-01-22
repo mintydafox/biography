@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
+            background: url('https://512pixels.net/downloads/macos-wallpapers-6k/10-4-6k.jpg') center/cover fixed;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background: linear-gradient(to bottom, #4d4d4d, #333);
+            color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #2d2d2d;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 16px;
+        }
+
+        section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        section li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #3d3d3d;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #2d2d2d;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        .status-box {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-box {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .activity-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .activity-info {
+            flex-grow: 1;
+        }
+    </style>
+    <title>minty's biography lmao</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Mintytosh</h1>
+        </header>
+
+        <section class="form-box">
+            <h2>my status rn</h2>
+            <div class="status-box" id="STATUS_BOX"></div>
+        </section>
+
+        <section>
+            <h2>Profile</h2>
+            <ul>
+                <li><strong>Hey, nerds. My name is</strong> minty.</li>
+                <li><strong>I'm </strong> [redacted] years old (LOL)</li>
+                <li><strong>my mood right now is</strong> kinda disappointed.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>haha i can code and you ca- (dead X_X)</p>
+        </footer>
+
+    </div>
+
+<script>
+        const FETCH_FROM_API = true;
+
+        function updateStatusBox(data) {
+            const statusBox = document.getElementById('STATUS_BOX');
+            statusBox.innerHTML = '';
+
+            if (FETCH_FROM_API && data) {
+                const { activity, song, artist, albumCoverURL, iTunesLink } = data;
+
+                const albumCover = document.createElement('img');
+                albumCover.src = albumCoverURL;
+                albumCover.alt = 'Album Cover';
+                albumCover.className = 'activity-image';
+
+                albumCover.addEventListener('click', function () {
+                    window.location.href = iTunesLink;
+                });
+
+                const activityInfo = document.createElement('div');
+                activityInfo.className = 'activity-info';
+                activityInfo.innerHTML = `<p>${activity}:</p><p>${song} by ${artist}</p>`;
+
+                statusBox.appendChild(albumCover);
+                statusBox.appendChild(activityInfo);
+            } else {
+                statusBox.textContent = "I'm just chilling right now.";
+            }
+        }
+
+        if (FETCH_FROM_API) {
+            fetch('https://raw.githubusercontent.com/mintydafox/biography/main/status.json')
+                .then(response => response.json())
+                .then(data => updateStatusBox(data))
+                .catch(error => console.error('Error fetching status:', error));
+        } else {
+            updateStatusBox(null);
+        }
+    </script>
+
+
+</body>
+
+</html>
