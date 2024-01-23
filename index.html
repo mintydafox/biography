@@ -142,6 +142,43 @@
         .activity-info {
             flex-grow: 1;
         }
+        
+.social-media-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.social-media-icons {
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 10px;
+            transition: transform 0.2s;
+            border-radius: 10px;
+            margin-bottom: -40px;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            margin-bottom: -40px;
+        }
+
+        .bar {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: -40px;
+        }
     </style>
     <title>minty's biography lmao</title>
 </head>
@@ -151,7 +188,7 @@
     <div class="container">
 
         <header class="online">
-            <img src="https://cdn.discordapp.com/avatars/518624747047616532/715c32036866edec797a35267a283dae.png?size=1024" alt="Profile Picture">
+            <img src="https://cdn.discordapp.com/avatars/518624747047616532/715c32036866edec797a35267a283dae.png?size=1024" alt="my profile picture, mf">
             <h1>Mintytosh</h1>
             <div class="online-indicator"></div>
         </header>
@@ -175,7 +212,19 @@
         </footer>
 
     </div>
+    <section class="social-media-section">
+        <div class="social-media-icons">
+            <a href="https://github.com/MintyDaFox" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="g" class="social-icon" />
+            </a>
+            
+            <a href="https://steamcommunity.com/profiles/76561198879213472/" target="_blank">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d97b64e4-7e9a-4756-bf0f-2feac3c0536a/d341scr-8efb7f45-5c76-4d07-a26b-e96d1ae050e0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Q5N2I2NGU0LTdlOWEtNDc1Ni1iZjBmLTJmZWFjM2MwNTM2YVwvZDM0MXNjci04ZWZiN2Y0NS01Yzc2LTRkMDctYTI2Yi1lOTZkMWFlMDUwZTAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.81CScn6ahFz_8-iuSy4sdRZEtaHHCaoz16eqy-J7UFc" alt="s" class="social-icon" />
+            </a>
+        </div>
 
+        <img src="https://s3.amazonaws.com//depot.pacdudegames.com/spacehey/KiYTQw8.png" alt="DFSGXA" class="bar" />
+    </section>
 <script>
         const FETCH_FROM_API = false;
 
