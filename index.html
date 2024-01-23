@@ -257,7 +257,7 @@
 
     function fetchAndUpdateStatus() {
         if (FETCH_FROM_API) {
-            fetch('https://raw.githubusercontent.com/mintydafox/biography/main/status.json')
+            fetch('https://mintydafox.github.io/biography/status.json')
                 .then(response => response.json())
                 .then(data => updateStatusBox(data))
                 .catch(error => console.error('Error fetching status:', error));
