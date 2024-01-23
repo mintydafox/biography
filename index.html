@@ -226,35 +226,36 @@
         <img src="https://s3.amazonaws.com//depot.pacdudegames.com/spacehey/KiYTQw8.png" alt="DFSGXA" class="bar" />
     </section>
 <script>
-        const FETCH_FROM_API = false;
+    const FETCH_FROM_API = true;
 
-        function updateStatusBox(data) {
-            const statusBox = document.getElementById('STATUS_BOX');
-            statusBox.innerHTML = '';
+    function updateStatusBox(data) {
+        const statusBox = document.getElementById('STATUS_BOX');
+        statusBox.innerHTML = '';
 
-            if (FETCH_FROM_API && data) {
-                const { activity, song, artist, albumCoverURL, iTunesLink } = data;
+        if (FETCH_FROM_API && data) {
+            const { activity, song, artist, albumCoverURL, iTunesLink } = data;
 
-                const albumCover = document.createElement('img');
-                albumCover.src = albumCoverURL;
-                albumCover.alt = 'Album Cover';
-                albumCover.className = 'activity-image';
+            const albumCover = document.createElement('img');
+            albumCover.src = albumCoverURL;
+            albumCover.alt = 'Album Cover';
+            albumCover.className = 'activity-image';
 
-                albumCover.addEventListener('click', function () {
-                    window.location.href = iTunesLink;
-                });
+            albumCover.addEventListener('click', function () {
+                window.location.href = iTunesLink;
+            });
 
-                const activityInfo = document.createElement('div');
-                activityInfo.className = 'activity-info';
-                activityInfo.innerHTML = `<p>${activity}:</p><p>${song} by ${artist}</p>`;
+            const activityInfo = document.createElement('div');
+            activityInfo.className = 'activity-info';
+            activityInfo.innerHTML = `<p>${activity}:</p><p>${song} by ${artist}</p>`;
 
-                statusBox.appendChild(albumCover);
-                statusBox.appendChild(activityInfo);
-            } else {
-                statusBox.textContent = "Just trying to find new ways to make this site better tbh.";
-            }
+            statusBox.appendChild(albumCover);
+            statusBox.appendChild(activityInfo);
+        } else {
+            statusBox.textContent = "Just trying to find new ways to make this site better tbh.";
         }
+    }
 
+    function fetchAndUpdateStatus() {
         if (FETCH_FROM_API) {
             fetch('https://raw.githubusercontent.com/mintydafox/biography/main/status.json')
                 .then(response => response.json())
@@ -263,7 +264,12 @@
         } else {
             updateStatusBox(null);
         }
-    </script>
+    }
+
+    setInterval(fetchAndUpdateStatus, 3000);
+
+    fetchAndUpdateStatus();
+</script>
 
 
 </body>
